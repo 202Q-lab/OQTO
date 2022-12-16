@@ -1,0 +1,43 @@
+(version 1)
+##
+# Coplanar wavegiode on L1 constraints
+####################################################
+(rule "Coplanar on F.Cu to ground"
+  (constraint clearance (min 0.120mm) (max 0.120mm))
+  (condition "A.Layer == 'F.Cu' && A.Type == 'Track' && B.Pad_Type != 'NPTH, Mechanical'"))
+(rule "Coplanar waveguide on F.Cu  width"
+  (constraint track_width (min 0.305mm) (max 0.305mm))
+  (condition "A.Layer == 'F.Cu'"))
+# Track-to-track clearance
+(rule "Coplanar waveguide on F.Cu min track"
+  (constraint clearance (min 0.4mm))
+  (condition "A.Type == 'Track' && B.Type == 'Track' && A.Net != B.Net && A.Layer == 'F.Cu'"))
+##
+# Stripline on L2 constraints
+####################################################
+(rule "Stripline on In1.Cu to ground"
+  (constraint clearance (min 0.12mm) (max 0.12mm))
+  (condition "A.Layer == 'In1.Cu' && A.Type == 'Track'"))
+(rule "Stripline on In1.Cu width"
+  (constraint track_width (min 0.135mm) (max 0.135mm))
+  (condition "A.Layer == 'In1.Cu'"))
+# Track-to-track clearance 
+#(rule "Stripline on In1.Cu min track"
+#  (constraint clearance (min 0.6825mm))
+#  (condition "A.Type == 'Track' && B.Type == 'Track' && A.Net != B.Net && A.Layer == 'In1.Cu'"))
+##
+# µ-via rules
+####################################################
+(rule "Standard µvia hole"
+  (constraint hole (min 0.125mm) (max 0.125mm))
+  (condition "A.insideArea('uvia_transition_clearance') && A.Type == 'Via' && A.Via_Type == 'Micro'"))
+(rule "Standard µvia pad"
+  (constraint annular_width (min 0.0575mm) (max 0.0575mm))
+  (condition "A.insideArea('uvia_transition_clearance') && A.Type == 'Via' && A.Via_Type == 'Micro'"))
+(rule "Connector via hole"
+  (constraint hole (min 0.125mm) (max 0.125mm))
+  (condition "A.insideArea('connector_via_rule_area') && A.Type == 'Via' && A.Via_Type == 'Micro'"))
+# Annular ring:
+(rule "Connector via pad"
+  (constraint annular_width (min 0.1875mm) (max 0.1875mm))
+  (condition "A.insideArea('connector_via_rule_area') && A.Type == 'Via' && A.Via_Type == 'Micro'"))

@@ -1,0 +1,9 @@
+#---
+Any modification to OQTO shall be documented in this file. Information required to be added when a change is made is 
+the date of when the change was made and a brief description of what was changed according to section 3.3.b 
+of CERN-OHL-S v2 license. This could look like the following example:
+ 
+- "16 December 2022: Modification to ... by adding ... to the file ...".
+
+Information about the design should be added to this file but must never be removed.
+#---
