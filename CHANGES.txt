@@ -7,3 +7,7 @@ of CERN-OHL-S v2 license. This could look like the following example:
 
 Information about the design should be added to this file but must never be removed.
 #---
+
+- 11 February 2023 (anlinus): Modification to "202Q-OQTO-8port-7x7mm-Lid.step" by decreasing the height to 4 mm instead of 7 mm. 
+					The inner cavity is now 3 mm in height. The change was implemented in FreeCAD for which the 
+					corresponding file has been added into the repository. 
